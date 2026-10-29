@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "author": "Medikal Acil Durum Sistemi",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 120, "left": 60, "attrs": {} },
+    { "type": "wokwi-lcd1602", "id": "lcd", "top": -120, "left": -60, "attrs": { "pins": "i2c" } },
+    { "type": "wokwi-mpu6050", "id": "mpu", "top": -82.58, "left": 232.72, "attrs": {} },
+    { "type": "wokwi-buzzer", "id": "buzzer", "top": 50, "left": 310, "attrs": {} },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn",
+      "top": 50,
+      "left": -70,
+      "attrs": { "color": "red", "label": "IPTAL" }
+    },
+    {
+      "type": "wokwi-rgb-led",
+      "id": "rgb",
+      "top": 50,
+      "left": 30,
+      "attrs": { "common": "cathode" }
+    }
+  ],
+  "connections": [
+    [ "uno:5V", "mpu:VCC", "red", [ "v0" ] ],
+    [ "uno:GND.1", "mpu:GND", "black", [ "v0" ] ],
+    [ "uno:A4", "mpu:SDA", "blue", [ "v-20", "h130" ] ],
+    [ "uno:A5", "mpu:SCL", "yellow", [ "v-30", "h140" ] ],
+    [ "uno:5V", "lcd:VCC", "red", [ "v0" ] ],
+    [ "uno:GND.1", "lcd:GND", "black", [ "v0" ] ],
+    [ "uno:A4", "lcd:SDA", "blue", [ "v-20", "h-110" ] ],
+    [ "uno:A5", "lcd:SCL", "yellow", [ "v-30", "h-110" ] ],
+    [ "uno:8", "buzzer:1", "purple", [ "v-20", "h90" ] ],
+    [ "uno:GND.1", "buzzer:2", "black", [ "v0" ] ],
+    [ "uno:2", "btn:1.l", "orange", [ "v-20", "h-60" ] ],
+    [ "uno:GND.1", "btn:2.l", "black", [ "v0" ] ],
+    [ "uno:6", "rgb:R", "red", [ "v-15", "h-25" ] ],
+    [ "uno:GND.1", "rgb:COM", "black", [ "v0" ] ],
+    [ "uno:5", "rgb:G", "green", [ "v-10", "h-15" ] ],
+    [ "uno:3", "rgb:B", "blue", [ "v-5", "h-10" ] ]
+  ],
+  "dependencies": {}
+}
